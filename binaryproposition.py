@@ -128,22 +128,6 @@ class BinaryProposition:
             else:
                 return False
 
-    def XOR(expr, dictionary):
-        atoms = [i for i in expr.text]
-
-        for i in range(len(atoms)):
-            if atoms[i - 1] == "~" and atoms[i].isalpha():
-                dictionary[atoms[i]] = False
-        operator = "^"
-
-        expressions = [atom for atom in atoms if atom.isalpha()]
-        if operator:
-            if any(dictionary[expression] for expression in expressions) and not all(
-                    dictionary[expression] for expression in expressions):
-                return True
-            else:
-                return False
-
     def XNOR(expr, dictionary):
         atoms = [i for i in expr.text]
 
