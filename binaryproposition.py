@@ -6,7 +6,6 @@ class BinaryProposition:
         self.text = text
         self.dictionary = {i: True for i in self.text if i.isalpha()}
         self.truth_val = None
-        #ignore dictionaries for now, these may be used later
         self.unary_operators = {"~": "NOT"}
         self.binary_operators = {
             "&": "AND",
@@ -16,6 +15,15 @@ class BinaryProposition:
             "-": "NOR",
             "_": "XNOR"
         }
+
+    def atomsindividually(expr):
+        st = str(expr.text)
+        x = st.replace("(", " ").replace(")", " ")
+        x = x.strip(" ")
+        for i in range(len(x)):
+            if x[i - 1] == "~" and x[i].isalpha():
+                expr.dictionary[x[i]] = False
+        return expr.dictionary.items()
 
 
     def parse(expr):
@@ -50,9 +58,14 @@ class BinaryProposition:
                 elif "^" in i:
                     truth_value = BinaryProposition(i).XOR(expr.dictionary)
                     dictionary[i] = truth_value
-
         stack = [(i, dictionary[i]) for i in x if i.isalpha() or len(i) > 1]
         return stack
+
+
+
+
+
+        #return stack
 
     # -----BINARY OPERATIONS----- #
     # AND
@@ -160,7 +173,8 @@ class BinaryProposition:
         P = BinaryProposition(x)
         items = x.replace("(", "[").replace(")", "]")
         items2 = items.replace("&", " and ").replace("$", " or ").replace("T", " True ").replace("~", " not ")
-        return "%s:%s" % (expr.text, str(eval(items2)).replace("]", "").replace("[", "")), items
+        print("%s:%s" % (expr.text, str(eval(items2)).replace("]", "").replace("[", "")))
+        return str(eval(items2)).replace("]", "").replace("[", "")
 
 
 expression = BinaryProposition("(x&(Y&((~t$q)$(~o$~w))$(m&v)))")
