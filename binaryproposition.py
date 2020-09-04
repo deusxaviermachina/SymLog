@@ -6,6 +6,7 @@ class BinaryProposition:
         self.text = text
         self.dictionary = {i: True for i in self.text if i.isalpha()}
         self.truth_val = None
+        #ignore dictionaries for now, these may be used later
         self.unary_operators = {"~": "NOT"}
         self.binary_operators = {
             "&": "AND",
