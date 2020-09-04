@@ -29,7 +29,7 @@ class BinaryProposition:
         y = []
         x = x.split(" ")
         for elem in x:
-            newelem = elem.replace("~", "")
+            newelem = elem.replace("~", " ~ ")
             y.append(newelem)
         x = y
 
