@@ -60,9 +60,9 @@ def conditionalize(condition, *args):
 expr = conditionalize("A", "B", "C", "D")
 expr.implies("F", "Z")
 exp2 = expr.converse("F")
-# A-->F, ~necessarily F--->A, possibly F--->A (modal logic parsing capacities may be useful for situations like this)
+# A-->F; ~(necessarily)F--->A AND (possibly)F--->A (modal logic parsing capacities may be useful for situations like this)
 exp2 = conditionalize(exp2.premise, "A")
-# F----->A is True, ergo A iff F is True
+# (F----->A AND A---->F)-----> A <---> F = A iff F
 print(expr.does_a_imply_b("F"))
 print(exp2.does_a_imply_b("A"))
 if expr.does_a_imply_b(exp2.premise) == False or exp2.does_a_imply_b(expr.premise) == False:
