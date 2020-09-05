@@ -51,21 +51,7 @@ class BinaryProposition:
                     dictionary[i] = truth_value
         stack = [(i, dictionary[i]) for i in x if i.isalpha() or len(i) > 1]
         return stack
-
-
-
-
-
-        #return stack
-
-    # -----BINARY OPERATIONS----- #
-    # AND
-    # NAND--if NAND--if both inputs are true, outputs are false;else, output is true
-    # OR
-    # XOR
-    # NOR---if both inputs are false, output is true; else, output is false
-    # XNOR--if both inputs are same, output=true; else, output=false
-    # ----------------------------#
+    
     def AND(expr, dictionary):
         atoms = [i for i in expr.text]
         for i in range(len(atoms)):
