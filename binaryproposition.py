@@ -16,15 +16,6 @@ class BinaryProposition:
             "_": "XNOR"
         }
 
-    def atomsindividually(expr):
-        st = str(expr.text)
-        x = st.replace("(", " ").replace(")", " ")
-        x = x.strip(" ")
-        for i in range(len(x)):
-            if x[i - 1] == "~" and x[i].isalpha():
-                expr.dictionary[x[i]] = False
-        return expr.dictionary.items()
-
 
     def parse(expr):
         # returns a list object that stores logic formulae and their corresponding truth values for programmatic use
