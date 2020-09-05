@@ -23,13 +23,13 @@ class Conditional:
         else:
             return
 
-    def negation(self):
+   def negation(self):
         premise=BinaryProposition(f"~{self.premise}")
         x={premise:eval(premise.evaluate())}
         for (i, j) in x.items():
             return [i.text, j]
-
-    def contrapositive(self, arg):
+        
+   def contrapositive(self, arg):
         if arg not in self.consequences:
             return
         else:
@@ -37,6 +37,16 @@ class Conditional:
             contra.implies(self.premise)
             print(f"({self.premise}->{arg})->({contra.premise[0]}->{self.premise})")
             return {f"{contra.premise[0]}->{self.premise}":True}
+        
+        
+   def inverse(self, arg):
+        if arg not in self.consequences:
+            return
+        else:
+            inversion=Conditional(f"~{self.premise}")
+            negated_conclusion=f"~{arg}"
+            inversion.implies(negated_conclusion)
+            return {f"{inversion.premise}-->{negated_conclusion}"}
 
 
 def conditionalize(condition, *args):
