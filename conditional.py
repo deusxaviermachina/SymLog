@@ -1,7 +1,7 @@
 from binaryproposition import BinaryProposition
 
 class Conditional:
-    def __init__(self, premise, *args):
+    def __init__(self, premise):
         self.premise=premise
         self.consequences=[]
 
