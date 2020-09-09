@@ -153,12 +153,12 @@ class BinaryProposition:
         print("%s:%s" % (expr.text, str(eval(items2)).replace("]", "").replace("[", "")))
         return str(eval(items2)).replace("]", "").replace("[", "")
 
-
-expression = BinaryProposition("(x&(Y&((~t$q)$(~o$~w))$(m&v)))")
-print(expression.evaluate())
-expression = BinaryProposition("A$B")
-print(expression.evaluate())
-expression2 = BinaryProposition("(W&X)^(Y&Z)")
-print(expression2.parse())
-expression = BinaryProposition("(Y&~X)$(~b^Q)")
-print(expression.parse())
+if __name__ == "__main__":
+    expression = BinaryProposition("(x&(Y&((~t$q)$(~o$~w))$(m&v)))")
+    print(expression.evaluate())
+    expression = BinaryProposition("A$B")
+    print(expression.evaluate())
+    expression2 = BinaryProposition("(W&X)^(Y&Z)")
+    print(expression2.parse())
+    expression = BinaryProposition("(Y&~X)$(~b^Q)")
+    print(expression.parse())
