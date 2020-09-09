@@ -135,6 +135,7 @@ class BinaryProposition:
                 return True
 
     def evaluate(expr):
+        
         """
         will return truth value for a given formula if the formula contains a conjunction (AND) binary operator
         and/or an inclusive or (OR) binary operator(i.e. the ones that can be directly converted into python logical operators).
