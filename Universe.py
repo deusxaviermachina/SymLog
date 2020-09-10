@@ -39,7 +39,7 @@ def query(item, *attributes, Boole=""):
             return True
         else:
             return False
-    if Boole=="and":
+    elif Boole=="and":
         if all(attribute in UNIVERSE[item] for attribute in attributes):
             return True
         else:
