@@ -7,6 +7,7 @@ class BinaryProposition:
         self.dictionary = {i: True for i in self.text if i.isalpha()}
         self.truth_val = None
         self.unary_operators = {"~": "NOT"}
+        #dictionaries don't actually do anything but I was meaning to use them for something later
         self.binary_operators = {
             "&": "AND",
             "$": "OR",
