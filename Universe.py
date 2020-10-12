@@ -53,7 +53,7 @@ def query(item, *attributes, Boole=""):
 if __name__ == "__main__":
     expr = conditionalize("Socrates", "Man", "Philosopher", "Greek", "Dead")
     (add_to_universe(expr))
-    expr2 = conditionalize("Donald J.Trump", "Man", "American", "Alive")
+    expr2 = conditionalize("Bill Gates", "Man", "American", "Alive")
     (add_to_universe(expr2))
     expr3 = conditionalize("Man", "Mortal", "Rational")
     (add_to_universe(expr3))
