@@ -4,18 +4,24 @@ class Conditional:
     def __init__(self, premise):
         self.premise=premise
         self.consequences=[]
+    
 
     def implies(self, *args):
+        #get conclusions associated with some premise
         for arg in args:
             self.consequences.append(arg)
 
     def does_a_imply_b(self, consequent):
+        """query some statement, b, to see if it follows from a premise (e.g. suppose that A--->B, and not(A--->C) 
+        if B is passed as an argument, this function will return 'True'. If 'C' is passed, it will return 'False'"""
         if consequent in self.consequences:
             return True
         else:
             return False
 
     def converse(self, b):
+        """this checks whether a conditional is also a biconditional i.e. if, given some conditional statement. A--->B, 
+        its converse (i.e. B---->A) is also True. Formally, this can be expressed as '((A--->B) & (B--->A))----> (A<--->B)'"""
         if b not in self.consequences:
             return
         if self.does_a_imply_b(b) == True:
