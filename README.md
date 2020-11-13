@@ -1,4 +1,4 @@
-# SymLog
+# SymLog (working title)
 Mathematical Logic Parsing and Evaluation
 
 
