@@ -1,21 +1,20 @@
 import re
 
+"""
+1.) UNARY OPERATORS
+1.1) "P" (PROPOSITION)
+1.2) "~P" (NEGATION)
 
+2.) BINARY OPERATORS
+2.1) "P&Q" (AND)
+2.2) "P$Q" (INCLUSIVE OR)
+2.3) "P^Q" (XOR)
+"""
 class BinaryProposition:
     def __init__(self, text):
         self.text = text
         self.dictionary = {i: True for i in self.text if i.isalpha()}
         self.truth_val = None
-        self.unary_operators = {"~": "NOT"}
-        #dictionaries don't actually do anything but I was meaning to use them for something later
-        self.binary_operators = {
-            "&": "AND",
-            "$": "OR",
-            ".": "NAND",
-            "^": "XOR",
-            "-": "NOR",
-            "_": "XNOR"
-        }
 
 
     def parse(expr):
