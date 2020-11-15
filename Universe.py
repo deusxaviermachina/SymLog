@@ -60,3 +60,7 @@ if __name__ == "__main__":
     update_universe(expr, expr3.premise)
     update_universe(expr2, expr3.premise)
     print(query("Socrates","Greek", "Man", Boole="and"))
+        if "Rational" in set(UNIVERSE["Socrates"]):
+        print(True, UNIVERSE["Socrates"], set(UNIVERSE["Socrates"]))
+    else:
+        print(False)
