@@ -6,10 +6,10 @@ binary_operators ={
 }
 
 def is_unary(variable:str):
-    return variable=="~" or variable == "NOT"
+    return variable=="~"
 
 def is_binary(variable:str):
-    return (variable == "&" or variable == "AND") or (variable == "|" or variable == "OR")
+    return variable == "&" or variable == "|"
 
 def is_variable(variable:str):
     return all(char.isalpha() and char.isupper() for char in variable)
