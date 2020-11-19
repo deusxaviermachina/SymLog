@@ -35,7 +35,7 @@ class FormulaTree:
 f=FormulaTree("&", FormulaTree("&", "P", FormulaTree("&", "X", "Y")), FormulaTree("~", "A"))
 print(f.write())
 
-def evaluate(formula:FormulaTree,model:dict)->bool:
+def evaluate(formula:FormulaTree,model:dict):
     for i in formula:
         if is_variable(i):
             formula=formula.replace(i,str(model[i]))
