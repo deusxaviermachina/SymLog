@@ -33,6 +33,7 @@ class FormulaTree:
         elif self.branch1 is None and self.branch2 is None:
             return f"{self.root}"
 
+#f=(P&(X&Y)&(~A))
 f=FormulaTree("&", FormulaTree("&", "P", FormulaTree("&", "X", "Y")), FormulaTree("~", "A"))
 print(f.write())
 
