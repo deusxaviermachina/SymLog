@@ -21,6 +21,7 @@ class FormulaTree:
         self.branch2=branch2
 
     def write(self):
+        #converts formula tree object into string consistent with syntax
         if type(self.branch1)==FormulaTree:
             self.branch1=self.branch1.write()
         if type(self.branch2)==FormulaTree:
@@ -35,6 +36,7 @@ class FormulaTree:
 f=FormulaTree("&", FormulaTree("&", "P", FormulaTree("&", "X", "Y")), FormulaTree("~", "A"))
 print(f.write())
 
+#parse string into python
 def evaluate(formula:FormulaTree,model:dict):
     for i in formula:
         if is_variable(i):
