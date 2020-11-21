@@ -21,7 +21,7 @@ class Conditional:
 
     def converse(self, b):
         """this checks whether a conditional is also a biconditional i.e. if, given some conditional statement. A--->B, 
-        its converse (i.e. B---->A) is also True. Formally, this can be expressed as '((A--->B) & (B--->A))----> (A<--->B)'"""
+        its converse (i.e. B---->A) is also True. Formally, this can be expressed as '((A--->B) & (B--->A)) <----> (A<--->B)'"""
         if b not in self.consequences:
             return
         if self.does_a_imply_b(b) == True:
