@@ -21,7 +21,7 @@ class BinaryProposition:
 
 
     def parse(expr):
-        # returns a list object that stores logic formulae and their corresponding truth values for programmatic use
+        # returns a list object that stores logic formulae and their truth values
         st = str(expr.text)
         x = st.replace("(", " ").replace(")", " ")
         x = x.strip(" ")
