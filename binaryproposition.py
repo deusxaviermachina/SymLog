@@ -1,6 +1,9 @@
 import re
 
 """
+---------
+SYNTAX:
+---------
 1.) UNARY OPERATIONS
 1.1) "P" (PROPOSITION)
 1.2) "~P" (NEGATION)
