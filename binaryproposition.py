@@ -21,6 +21,12 @@ class BinaryProposition:
 
 
     def parse(expr):
+        if len(expr.text)==2 and expr.text[0] == "~":
+            expr.dictionary={expr.text:False}
+            return [(expr, expr.dictionary[expr.text])]
+        if len(expr.text)==1 and expr.text.isalpha():
+            expr.dictionary= {expr.text:True}
+            return [(expr, expr.dictionary[expr.text])]
         # returns a list object that stores logic formulae as strings and their truth values as booleans
         st = str(expr.text)
         x = st.replace("(", " ").replace(")", " ")
@@ -35,7 +41,7 @@ class BinaryProposition:
             y.append(newelem)
         x = y
 
-        dictionary = {i: None for i in x if i.isalpha()}
+        dictionary = {i: None for i in x if i.isalpha()}  
         for i in x:
             if len(i) > 1:
                 if "&" in i:
@@ -52,6 +58,17 @@ class BinaryProposition:
                 elif "^" in i:
                     truth_value = BinaryProposition(i).XOR(expr.dictionary)
                     dictionary[i] = truth_value
+                elif "." in i:
+                    truth_value = BinaryProposition(i).NAND(expr.dictionary)
+                    dictionary[i] = truth_value
+                elif "-" in i:
+                    truth_value = BinaryProposition(i).NOR(expr.dictionary)
+                    dictionary[i]=truth_value
+                elif "_" in i:
+                    truth_value = BinaryProposition(i).XNOR(expr.dictionary)
+                    dictionary[i] = truth_value
+                else:
+                    pass
         stack = [(i, dictionary[i]) for i in x if i.isalpha() or len(i) > 1]
         return stack
     
@@ -166,3 +183,36 @@ if __name__ == "__main__":
     print(expression2.parse())
     expression = BinaryProposition("(Y&~X)$(~b^Q)")
     print(expression.parse())
+    #XNOR OPERATOR TESTS
+    assert BinaryProposition("~P_~Q").parse()[0][1] and BinaryProposition("P_Q").parse()[0][1]
+    assert not BinaryProposition("P_~Q").parse()[0][1] and not BinaryProposition("~P_Q").parse()[0][1]
+    print(BinaryProposition("P_Q").parse())
+    #NAND OPERATOR TESTS
+    assert BinaryProposition("A.~B").parse()[0][1] and BinaryProposition("~A.B").parse()[0][1]
+    assert not BinaryProposition("A.B").parse()[0][1]
+    #NOR OPERATOR TESTS
+    assert not BinaryProposition("P-Q").parse()[0][1] and not BinaryProposition("P-~Q").parse()[0][1]
+    assert not BinaryProposition("~P-Q").parse()[0][1]
+    assert BinaryProposition("~P-~Q").parse()[0][1]
+    #XOR OPERATOR TESTS
+    assert not BinaryProposition("P^Q").parse()[0][1]
+    assert BinaryProposition("~P^Q").parse()[0][1] and BinaryProposition("P^~Q").parse()[0][1]
+    #OR OPERATOR TESTS
+    assert BinaryProposition("P$Q").parse()[0][1] and BinaryProposition("~P$Q").parse()[0][1]
+    assert BinaryProposition("P$~Q").parse()[0][1] and not BinaryProposition("~P$~Q").parse()[0][1]
+    #AND OPERATOR TESTS
+    assert BinaryProposition("P&Q").parse()[0][1] and not BinaryProposition("~P&~Q").parse()[0][1]
+    assert not BinaryProposition("~P&Q").parse()[0][1] and not BinaryProposition("P&~Q").parse()[0][1]
+    assert not BinaryProposition("~P").parse()[0][1]
+    assert BinaryProposition("P").parse()[0][1]
+
+    
+    
+
+           
+    
+    
+    
+    
+    
+    
