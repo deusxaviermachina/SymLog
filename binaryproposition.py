@@ -211,14 +211,3 @@ if __name__ == "__main__":
     assert not BinaryProposition("~P&Q").parse()[0][1] and not BinaryProposition("P&~Q").parse()[0][1]
     assert not BinaryProposition("~P").parse()[0][1]
     assert BinaryProposition("P").parse()[0][1]
-
-    
-    
-
-           
-    
-    
-    
-    
-    
-    
