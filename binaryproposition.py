@@ -183,23 +183,29 @@ if __name__ == "__main__":
     print(expression2.parse())
     expression = BinaryProposition("(Y&~X)$(~b^Q)")
     print(expression.parse())
+    
     #XNOR OPERATOR TESTS
     assert BinaryProposition("~P_~Q").parse()[0][1] and BinaryProposition("P_Q").parse()[0][1]
     assert not BinaryProposition("P_~Q").parse()[0][1] and not BinaryProposition("~P_Q").parse()[0][1]
     print(BinaryProposition("P_Q").parse())
+    
     #NAND OPERATOR TESTS
     assert BinaryProposition("A.~B").parse()[0][1] and BinaryProposition("~A.B").parse()[0][1]
     assert not BinaryProposition("A.B").parse()[0][1]
+    
     #NOR OPERATOR TESTS
     assert not BinaryProposition("P-Q").parse()[0][1] and not BinaryProposition("P-~Q").parse()[0][1]
     assert not BinaryProposition("~P-Q").parse()[0][1]
     assert BinaryProposition("~P-~Q").parse()[0][1]
+    
     #XOR OPERATOR TESTS
     assert not BinaryProposition("P^Q").parse()[0][1]
     assert BinaryProposition("~P^Q").parse()[0][1] and BinaryProposition("P^~Q").parse()[0][1]
+    
     #OR OPERATOR TESTS
     assert BinaryProposition("P$Q").parse()[0][1] and BinaryProposition("~P$Q").parse()[0][1]
     assert BinaryProposition("P$~Q").parse()[0][1] and not BinaryProposition("~P$~Q").parse()[0][1]
+    
     #AND OPERATOR TESTS
     assert BinaryProposition("P&Q").parse()[0][1] and not BinaryProposition("~P&~Q").parse()[0][1]
     assert not BinaryProposition("~P&Q").parse()[0][1] and not BinaryProposition("P&~Q").parse()[0][1]
