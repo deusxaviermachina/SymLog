@@ -9,7 +9,7 @@ class Proposition:
                 self.text=self.text.replace(i, str(self.model[i])).strip()
             else:
                 pass
-        print(eval(self.text))
+        return eval(self.text)
 
 if __name__ == "__main__":
     model={"X":True, "Y":False, "P":True, "Q":False}
