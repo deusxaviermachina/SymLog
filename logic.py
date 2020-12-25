@@ -1,5 +1,5 @@
 class Proposition:
-    def __init__(self,text,model:dict):
+    def __init__(self,text:str,model:dict):
         self.text=text
         self.model=model
 
